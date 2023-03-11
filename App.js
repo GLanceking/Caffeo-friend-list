@@ -11,11 +11,16 @@ import Margin from "./src/Margin";
 import DivisionLine from "./src/DivisionLine";
 import FriendSection from "./src/FriendSection";
 import FriendList from "./src/FriendList";
+import { useState } from "react";
 
 const statusBarHeight = getStatusBarHeight(true);
 
 export default function App() {
-  const onPressArrow = (first) => console.log("클릭");
+  const [isOpened, setIsOpened] = useState(true);
+
+  const onPressArrow = () => {
+    setIsOpened(!isOpened);
+  };
 
   return (
     <View style={styles.container}>
@@ -32,9 +37,10 @@ export default function App() {
       <FriendSection
         friendProfileLen={friendProfiles.length}
         onPressArrow={onPressArrow}
+        isOpened={isOpened}
       />
 
-      <FriendList data={friendProfiles} />
+      <FriendList data={friendProfiles} isOpened={isOpened} />
     </View>
   );
 }

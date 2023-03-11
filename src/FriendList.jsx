@@ -6,6 +6,10 @@ import Margin from "./Margin";
 const bottomSpace = getBottomSpace();
 
 export default (props) => {
+  if (!props.isOpened) {
+    return null;
+  }
+
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
